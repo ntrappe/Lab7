@@ -1,0 +1,6 @@
+// saw on Slack channel to make Live Server work ok
+{
+    "liveServer.settings.ignoreFiles": [
+        "./db.json"
+    ],
+}
