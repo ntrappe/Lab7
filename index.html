@@ -94,7 +94,7 @@
         })
         .then(response => {
           if (!response.ok) {       // aka outside of [200,300) which are valid
-            throw 'Endpoint ' + response.statusText;
+            throw 'Error ' + response.status + ': Posts ' + response.statusText;
           }
           return response.text();   // no error
         })
@@ -125,8 +125,7 @@
         })
         .then(response => {
           if (!response.ok) {
-            throw "Error 404: No post found for this ID.";
-            //throw "Error 404: " + response.statusText;
+            throw 'Error ' + response.status + ': Post For ID #' + id + ' ' + response.statusText;
           }
           return response.text();   // no error
         })
@@ -174,8 +173,7 @@
         })
         .then(response => {
           if (!response.ok) {
-            throw "Error 404: No post found for this ID.";
-            //throw "Error 404: " + response.statusText;
+            throw 'Error ' + response.status + ': Post For ID #' + id + ' ' + response.statusText;
           }
           return response.text();   // no error
         })
