@@ -87,21 +87,22 @@
         // the link that users put into "Endpoint" on site
         const endpoint = document.getElementById('endpoint').value;
         const output = document.getElementById('output');
-        alert("fetch from endpt: " + endpoint);
 
-
-        fetch(endpoint)
+        fetch(endpoint) 
           .then(response => {
-            //output.textContent = response.statusText;
+            if (!response.ok) {   // aka outside of [200,300) which are valid
+              throw response;
+            }
+            // no error
+            return response.text();
           })
           .then(data => {
-            //alert(String(data));
             output.textContent = data;
           })
           .catch(error => {
-            alert('Error: ' + error);
-            //error = error;
+            output.textContent = error;
           });
+
       }
 
       // This function should fetch one entry from the given endpoint.
