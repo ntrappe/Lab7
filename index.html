@@ -79,6 +79,7 @@
 
     <!-- Main Script -->
     <script type="module">
+      const ENTER_ID = "Enter record id";
       // This function should fetch all of the data from the given endpoint.
       // From the 4 CRUD actions, this is the READ action, and uses the GET http method.
       // The main difference from fetchOne() will be the URL you request from; check
@@ -122,7 +123,7 @@
         let recordForm = document.getElementById('recordForm').style.display = "none";
         let displayID = document.getElementById('recordIDcontainer').style.display = "none";
 
-        let id = prompt('Please provide an ID:');
+        let id = prompt(ENTER_ID);
         // new endpoint should have posts/#
         endpoint = endpoint + '/' + id;
 
@@ -251,7 +252,7 @@
         const displayID = document.getElementById('recordIDcontainer');
         displayID.style.display = "none";*/
 
-        let id = prompt('Please provide an ID:');
+        let id = prompt(ENTER_ID);
         // new endpoint should have posts/#
         endpoint = endpoint + '/' + id;
 
