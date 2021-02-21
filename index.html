@@ -86,23 +86,24 @@
       function fetchAll() {
         // the link that users put into "Endpoint" on site
         const endpoint = document.getElementById('endpoint').value;
+        // what is displayed to site after a request
         const output = document.getElementById('output');
 
-        fetch(endpoint) 
-          .then(response => {
-            if (!response.ok) {   // aka outside of [200,300) which are valid
-              throw response;
-            }
-            // no error
-            return response.text();
-          })
-          .then(data => {
-            output.textContent = data;
-          })
-          .catch(error => {
-            output.textContent = error;
-          });
-
+        fetch(endpoint, {
+          method: 'GET'             // use GET http method
+        })
+        .then(response => {
+          if (!response.ok) {       // aka outside of [200,300) which are valid
+            throw response;
+          }
+          return response.text();   // no error
+        })
+        .then(data => {
+          output.textContent = data;
+        })
+        .catch(error => {
+          output.textContent = error;
+        });
       }
 
       // This function should fetch one entry from the given endpoint.
@@ -110,7 +111,31 @@
       // The main difference from fetchAll() will be the URL you request from; check
       // the writeup to view the URL pattern for fetch one and fetch all
       function fetchOne() {
-        // TODO
+        // the link that users put into "Endpoint" on site
+        let endpoint = document.getElementById('endpoint').value;
+        // what is displayed to site after a request
+        const output = document.getElementById('output');
+
+        let id = prompt('Please provide an ID:');
+        // new endpoint should have posts/#
+        endpoint = endpoint + '/' + id;
+
+        fetch(endpoint, {
+          method: 'GET'             // use GET http method
+        })
+        .then(response => {
+          // error catching for any ID not 1 or 2 => 404
+          if (!response.ok) {
+            throw response;
+          }
+          return response.text();   // no error
+        })
+        .then(data => {
+          output.textContent = data;
+        })
+        .catch(error => {
+          output.textContent = error;
+        });
       }
 
       // This function should use fetch to create one entry in the given endpoint.
