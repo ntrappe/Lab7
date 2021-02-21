@@ -124,9 +124,8 @@
           method: 'GET'             // use GET http method
         })
         .then(response => {
-          // error catching for any ID not 1 or 2 => 404
           if (!response.ok) {
-            throw response;
+            throw "Error 404: No post found for this ID.";
           }
           return response.text();   // no error
         })
