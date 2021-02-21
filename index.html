@@ -84,7 +84,15 @@
       // The main difference from fetchOne() will be the URL you request from; check
       // the writeup to view the URL pattern for fetch one and fetch all
       function fetchAll() {
-        // TODO
+        // the link that users put into "Endpoint" on site
+        const endpoint = document.getElementById('endpoint').value;
+        const output = document.getElementById('output');
+        const status, response, error;
+        alert("fetch from endpt: " + endpoint);
+  
+        fetch("http://localhost:3000/posts")
+          .then(response => response.json())
+          .then(data => alert(data));
       }
 
       // This function should fetch one entry from the given endpoint.
