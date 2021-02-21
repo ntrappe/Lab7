@@ -12,3 +12,5 @@ https://ntrappe.github.io/Lab7/
 - DO NOT use `return response.json();` becase it's actually html/text content so just do `return response.text();`
 - using `response.ok` checks that codes (e.g. `GET /posts 304 8.349 ms - -`) are valid aka between 200-299
   - throw error ref: https://gist.github.com/odewahn/5a5eeb23279eed6a80d7798fdb47fe91
+- style `visibility` tab isn't working to hide/show the form so try `unset` and `none` for now: https://developer.mozilla.org/en-US/docs/Web/CSS/unset
+- dumb reminder: DO NOT USE A CONST WHEN WE WILL MODIFY IT
