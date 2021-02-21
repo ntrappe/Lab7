@@ -91,8 +91,9 @@
         alert("fetch from endpt: " + endpoint);
   
         fetch("http://localhost:3000/posts")
-          .then(response => response.json())
-          .then(data => alert(data));
+          .then(response => alert('response: ' + response.statusText))
+          .then(data => alert('data: ' + data))
+          .catch(error => alert('error: ' + error));
       }
 
       // This function should fetch one entry from the given endpoint.
