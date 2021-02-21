@@ -94,7 +94,7 @@
         })
         .then(response => {
           if (!response.ok) {       // aka outside of [200,300) which are valid
-            throw response;
+            throw 'Endpoint ' + response.statusText;
           }
           return response.text();   // no error
         })
@@ -126,6 +126,7 @@
         .then(response => {
           if (!response.ok) {
             throw "Error 404: No post found for this ID.";
+            //throw "Error 404: " + response.statusText;
           }
           return response.text();   // no error
         })
@@ -159,7 +160,31 @@
       // request; check the writeup to view the URL pattern for get one and delete. THERE IS NO 
       // delete all, only delete one.
       function deleteRecord() {
-        // TODO
+        // the link that users put into "Endpoint" on site
+        let endpoint = document.getElementById('endpoint').value;
+        // what is displayed to site after a request
+        const output = document.getElementById('output');
+
+        let id = prompt('Please provide an ID:');
+        // new endpoint should have posts/#
+        endpoint = endpoint + '/' + id;
+
+        fetch(endpoint, {
+          method: 'DELETE'          // use GET http method
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw "Error 404: No post found for this ID.";
+            //throw "Error 404: " + response.statusText;
+          }
+          return response.text();   // no error
+        })
+        .then(data => {
+          output.textContent = data;
+        })
+        .catch(error => {
+          output.textContent = error;
+        });
       }
 
       window.addEventListener('DOMContentLoaded', () => {
