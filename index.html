@@ -148,30 +148,44 @@
       // The main difference from updateRecord() will be the URL you send data to; check
       // the writeup to view the URL pattern for create and update
       function createRecord(visibility) {
-        // the link that users put into "Endpoint" on site
-        let endpoint = document.getElementById('endpoint').value;
-        // what is displayed to site after a request
+        // the link inputed on site + what is displayed after request
+        const endpoint = document.getElementById('endpoint').value;
         const output = document.getElementById('output');
 
-        let id = prompt('Please provide an ID:');
-        // new endpoint should have posts/#
-        endpoint = endpoint + '/' + id;
+        // form for collecting data + ID should only be displayed once user hits 'Create Request'
+        if (visibility == "show") {
+          // form for collecting data + DO NOT DISPLAY ID for record
+          let recordForm = document.getElementById('recordForm').style.display = "unset";
+          let displayID = document.getElementById('recordIDcontainer').style.display = "none";
+        }
 
-        fetch(endpoint, {
-          method: 'POST'             // use POST http method
-        })
-        .then(response => {
-          if (!response.ok) {
-            throw 'Error ' + response.status + ': Post For ID #' + id + ' ' + response.statusText;
-          }
-          return response.text();   // no error
-        })
-        .then(data => {
-          output.textContent = data;
-        })
-        .catch(error => {
-          output.textContent = error;
-        });
+        // user input
+        let author = document.getElementById('author').value;
+        let title = document.getElementById('title').value;
+
+        // update form data once user hits 'Execute'
+        if (visibility == "submit") {
+          fetch(endpoint, {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            method: 'POST',           // use PUT http method
+            body: JSON.stringify({ author, title }),
+          })
+          .then(response => {
+            if (!response.ok) {
+              throw 'Error ' + response.status + ': Post ' + response.statusText;
+            }
+            return response.text();   // no error
+          })
+          .then(data => {
+            output.textContent = data;
+          })
+          .catch(error => {
+            output.textContent = error;
+          });
+        }
+
       }
 
       // This function should use fetch to update one existing entry in the given endpoint.
@@ -179,7 +193,6 @@
       // The main difference from createRecord() will be the URL you send data to; check
       // the writeup to view the URL pattern for create and update
       function updateRecord(visibility) {
-        alert('visibility now: ' + visibility);
         // the link inputed on site + what is displayed after request
         let endpoint = document.getElementById('endpoint').value;
         const output = document.getElementById('output');
@@ -191,12 +204,13 @@
           let displayID = document.getElementById('recordIDcontainer').style.display = "unset";
         }
 
+        // user input
         let author = document.getElementById('author').value;
         let title = document.getElementById('title').value;
         let recordID = document.getElementById('recordID').value;    
 
-        // update form data once user hits 'Execute' (in case change answers)
-        if(visibility == "submit") {
+        // update form data once user hits 'Execute'
+        if (visibility == "submit") {
           endpoint = endpoint + '/' + recordID;
           fetch(endpoint, {
             headers: {
@@ -227,7 +241,7 @@
       // delete all, only delete one.
       function deleteRecord() {
         // the link inputed on site + what is displayed after request
-        const endpoint = document.getElementById('endpoint').value;
+        let endpoint = document.getElementById('endpoint').value;
         const output = document.getElementById('output');
 
         // form for collecting data + IDs SHOULD BE HIDDEN
