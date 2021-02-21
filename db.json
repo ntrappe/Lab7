@@ -6,9 +6,9 @@
       "author": "typicode"
     },
     {
-      "author": "Camdyn",
-      "title": "Test",
-      "id": 2
+      "author": "Powell",
+      "title": "HI",
+      "id": 3
     }
   ],
   "comments": [
@@ -16,6 +16,11 @@
       "id": 1,
       "body": "some comment",
       "postId": 1
+    },
+    {
+      "author": "Thomas",
+      "title": "Test",
+      "id": 2
     }
   ],
   "profile": {
