@@ -87,13 +87,23 @@
         // the link that users put into "Endpoint" on site
         const endpoint = document.getElementById('endpoint').value;
         const output = document.getElementById('output');
+        //let status, data, error;
         //const status, response, error;
         alert("fetch from endpt: " + endpoint);
   
         fetch("http://localhost:3000/posts")
-          .then(response => alert('response: ' + response.statusText))
-          .then(data => alert('data: ' + data))
-          .catch(error => alert('error: ' + error));
+          .then(response => {
+            alert('Response: ' + response.statusText);
+            //status = response.statusText;
+          })
+          .then(data => {
+            alert(String(data));
+            //data = data;
+          })
+          .catch(error => {
+            alert('Error: ' + error);
+            //error = error;
+          });
       }
 
       // This function should fetch one entry from the given endpoint.
