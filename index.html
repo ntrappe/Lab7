@@ -200,8 +200,7 @@
           endpoint = endpoint + '/' + recordID;
           fetch(endpoint, {
             headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
+              'Content-Type': 'application/json',
             },
             method: 'PUT',            // use PUT http method
             body: JSON.stringify({ author, title }),

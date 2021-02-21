@@ -14,3 +14,4 @@ https://ntrappe.github.io/Lab7/
   - throw error ref: https://gist.github.com/odewahn/5a5eeb23279eed6a80d7798fdb47fe91
 - style `visibility` tab isn't working to hide/show the form so try `unset` and `none` for now: https://developer.mozilla.org/en-US/docs/Web/CSS/unset
 - dumb reminder: DO NOT USE A CONST WHEN WE WILL MODIFY IT
+- need to add header for update/create: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
