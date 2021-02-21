@@ -15,3 +15,4 @@ https://ntrappe.github.io/Lab7/
 - style `visibility` tab isn't working to hide/show the form so try `unset` and `none` for now: https://developer.mozilla.org/en-US/docs/Web/CSS/unset
 - dumb reminder: DO NOT USE A CONST WHEN WE WILL MODIFY IT
 - need to add header for update/create: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+- use the same browser than is connected to VS Code to host Github site (for me that's Firefox)
